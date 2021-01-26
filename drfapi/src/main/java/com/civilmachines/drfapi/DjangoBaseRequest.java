@@ -17,7 +17,8 @@
 package com.civilmachines.drfapi;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.Response;
@@ -39,25 +40,23 @@ import java.util.Map;
  */
 public abstract class DjangoBaseRequest<T> extends JsonRequest<T> {
 
-    // Declare and define extra variable that will be used while creating a request.
-    private Context cont;
-
     // Change these static variable to define how token is stored in Android app and sent on server
     public static String keyAuthorizationHeader = "Authorization";
     public static String keyTokenPrefix = "Bearer ";
+    // Declare and define extra variable that will be used while creating a request.
+    private final Context cont;
 
     /**
      * Base request for Django REST Framework based APIs.
      * Adds Authorization header, if JWT token is present in the system.
      *
-     * @param method the HTTP method to use
-     * @param url URL to fetch the JSON from
-     * @param jsonRequest A {@link JSONObject} to post with the request. Null is allowed and
-     *   indicates no parameters will be posted along with request.
-     * @param listener Listener to receive the JSON response
+     * @param method        the HTTP method to use
+     * @param url           URL to fetch the JSON from
+     * @param jsonRequest   A {@link JSONObject} to post with the request. Null is allowed and
+     *                      indicates no parameters will be posted along with request.
+     * @param listener      Listener to receive the JSON response
      * @param errorListener Error listener, or null to ignore errors.
-     * @param context Context for accessing SharedPreference (used in headers)
-     *
+     * @param context       Context for accessing SharedPreference (used in headers)
      */
     public DjangoBaseRequest(int method,
                              String url,
@@ -75,6 +74,7 @@ public abstract class DjangoBaseRequest<T> extends JsonRequest<T> {
     /**
      * Sets Content-Type to application/json
      * Checks for presence of token in SharedPreferenceAdapter and sets it.
+     *
      * @return Map a Map of headers
      */
     @Override
@@ -87,7 +87,7 @@ public abstract class DjangoBaseRequest<T> extends JsonRequest<T> {
 
         String token = shaPre.getToken();
 
-        if(token != null){
+        if (token != null) {
             headers.put(keyAuthorizationHeader, keyTokenPrefix + token);
         }
         return headers;

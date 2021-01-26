@@ -18,7 +18,8 @@ package com.civilmachines.drfapi;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -43,16 +44,16 @@ public class DjangoJSONObjectRequest extends DjangoBaseRequest<JSONObject> {
 
     /**
      * Creates a new JSONObject request from Django REST Framework APIs
-     *
+     * <p>
      * Based on {@link com.android.volley.toolbox.JsonObjectRequest}
-     * @param method the HTTP method to use
-     * @param url URL to fetch the JSON from
-     * @param jsonRequest A {@link JSONObject} to post with the request. Null is allowed and
-     *   indicates no parameters will be posted along with request.
-     * @param listener Listener to receive the JSON response
-     * @param errorListener Error listener, or null to ignore errors.
-     * @param context A {@link Activity} to handle create {@link SharedPreferenceAdapter} object for token.
      *
+     * @param method        the HTTP method to use
+     * @param url           URL to fetch the JSON from
+     * @param jsonRequest   A {@link JSONObject} to post with the request. Null is allowed and
+     *                      indicates no parameters will be posted along with request.
+     * @param listener      Listener to receive the JSON response
+     * @param errorListener Error listener, or null to ignore errors.
+     * @param context       A {@link Activity} to handle create {@link SharedPreferenceAdapter} object for token.
      */
     public DjangoJSONObjectRequest(int method,
                                    String url,
@@ -69,12 +70,11 @@ public class DjangoJSONObjectRequest extends DjangoBaseRequest<JSONObject> {
     /**
      * Constructor without method. Decides method on the basis of jsonRequest body
      *
-     * @param url API Endpoint
-     * @param jsonRequest body
-     * @param listener response listener
+     * @param url           API Endpoint
+     * @param jsonRequest   body
+     * @param listener      response listener
      * @param errorListener error listener (must implement {@link DjangoErrorListener}
-     * @param context context for accessing SharedPreference
-     *
+     * @param context       context for accessing SharedPreference
      */
     public DjangoJSONObjectRequest(String url,
                                    @Nullable JSONObject jsonRequest,
@@ -90,9 +90,9 @@ public class DjangoJSONObjectRequest extends DjangoBaseRequest<JSONObject> {
      * Returns response in JSONObject format
      *
      * @param response NetworkResponse
-     * @return Response.success with JSONObject format of response or
-     *         Response.error when response in non-JSONObject format
      *
+     * @return Response.success with JSONObject format of response or
+     * Response.error when response in non-JSONObject format
      */
     @Override
     protected Response<JSONObject> parseNetworkResponse(NetworkResponse response) {
@@ -102,7 +102,7 @@ public class DjangoJSONObjectRequest extends DjangoBaseRequest<JSONObject> {
 
             return Response.success(new JSONObject(jsonString),
                     HttpHeaderParser.parseCacheHeaders(response));
-        } catch (UnsupportedEncodingException|JSONException e) {
+        } catch (UnsupportedEncodingException | JSONException e) {
             return Response.error(new ParseError(e));
         }
     }

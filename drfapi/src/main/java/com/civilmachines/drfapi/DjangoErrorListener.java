@@ -19,12 +19,12 @@ package com.civilmachines.drfapi;
 import com.android.volley.AuthFailureError;
 import com.android.volley.ClientError;
 import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
 import com.android.volley.Response;
 import com.android.volley.ServerError;
-import com.android.volley.VolleyError;
-import com.android.volley.ParseError;
-import com.android.volley.NoConnectionError;
 import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -32,9 +32,9 @@ import org.json.JSONObject;
 /**
  * An abstract class that implements {@link com.android.volley.Response.ErrorListener} and handles
  * error commonly raised by Django REST Framework based REST APIs.
- *
+ * <p>
  * This class has 18 abstract functions that are required to be implemented.
- *
+ * <p>
  * onErrorResponse function parses an error from API and invokes appropriate
  * function.
  *
@@ -82,7 +82,7 @@ public abstract class DjangoErrorListener implements Response.ErrorListener {
     /**
      * Function should handle parse error thrown by Android when server sends a
      * successful status code but the response is not in proper format.
-     *
+     * <p>
      * While making a DELETE request with Django, expect this error to be
      * thrown as the server sends a blank body.
      *
@@ -125,8 +125,8 @@ public abstract class DjangoErrorListener implements Response.ErrorListener {
      *                 to be parsed here as it may contain error in
      *                 following format:
      *                 <pre>
-     *                     {@code {"field": ["message"], ...}}
-     *                 </pre>
+     *                                     {@code {"field": ["message"], ...}}
+     *                                 </pre>
      */
     public abstract void onBadRequestError(JSONObject response);
 
@@ -201,6 +201,7 @@ public abstract class DjangoErrorListener implements Response.ErrorListener {
 
     /**
      * Parses the error based on StatusCode
+     *
      * @param error A {@link VolleyError} object.
      */
     public void onErrorResponse(VolleyError error) {
@@ -298,9 +299,7 @@ public abstract class DjangoErrorListener implements Response.ErrorListener {
                     onNonJsonError(response);
                 }
             }
-        }
-
-        else if (error instanceof ServerError)
+        } else if (error instanceof ServerError)
             onServerError(response);
         else if (error instanceof TimeoutError)
             onTimeoutError(response);
@@ -318,8 +317,7 @@ public abstract class DjangoErrorListener implements Response.ErrorListener {
             } catch (JSONException ex) {
                 onAuthFailureError(response);
             }
-        }
-        else
+        } else
             onDefaultError(response);
     }
 }

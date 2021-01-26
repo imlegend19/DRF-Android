@@ -18,7 +18,8 @@ package com.civilmachines.drfapi;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -42,16 +43,16 @@ import java.io.UnsupportedEncodingException;
 public class DjangoJSONArrayResponseRequest extends DjangoBaseRequest<JSONArray> {
     /**
      * Creates a new JSONObject request from Django REST Framework APIs
-     *
+     * <p>
      * Based on {@link com.android.volley.toolbox.JsonArrayRequest}
-     * @param method the HTTP method to use
-     * @param url URL to fetch the JSON from
-     * @param jsonRequest A {@link JSONObject} to post with the request. Null is allowed and
-     *   indicates no parameters will be posted along with request.
-     * @param listener Listener to receive the JSON response
-     * @param errorListener Error listener, or null to ignore errors.
-     * @param context A {@link Activity} to handle create {@link SharedPreferenceAdapter} object for token.
      *
+     * @param method        the HTTP method to use
+     * @param url           URL to fetch the JSON from
+     * @param jsonRequest   A {@link JSONObject} to post with the request. Null is allowed and
+     *                      indicates no parameters will be posted along with request.
+     * @param listener      Listener to receive the JSON response
+     * @param errorListener Error listener, or null to ignore errors.
+     * @param context       A {@link Activity} to handle create {@link SharedPreferenceAdapter} object for token.
      */
     public DjangoJSONArrayResponseRequest(int method,
                                           String url,
@@ -70,12 +71,11 @@ public class DjangoJSONArrayResponseRequest extends DjangoBaseRequest<JSONArray>
     /**
      * Constructor without method. Decides method on the basis of jsonRequest body
      *
-     * @param url API Endpoint
-     * @param jsonRequest body
-     * @param listener response listener
+     * @param url           API Endpoint
+     * @param jsonRequest   body
+     * @param listener      response listener
      * @param errorListener error listener (must implement {@link DjangoErrorListener}
-     * @param context context for accessing SharedPreference
-     *
+     * @param context       context for accessing SharedPreference
      */
     public DjangoJSONArrayResponseRequest(String url,
                                           @Nullable JSONObject jsonRequest,
@@ -91,9 +91,9 @@ public class DjangoJSONArrayResponseRequest extends DjangoBaseRequest<JSONArray>
      * Returns response in JSONArray format
      *
      * @param response NetworkResponse
-     * @return Response.success with JSONArray format of response or
-     *         Response.error when response in non-JSONArray format
      *
+     * @return Response.success with JSONArray format of response or
+     * Response.error when response in non-JSONArray format
      */
     @Override
     protected Response<JSONArray> parseNetworkResponse(NetworkResponse response) {
@@ -103,7 +103,7 @@ public class DjangoJSONArrayResponseRequest extends DjangoBaseRequest<JSONArray>
 
             return Response.success(new JSONArray(jsonString),
                     HttpHeaderParser.parseCacheHeaders(response));
-        } catch (UnsupportedEncodingException |JSONException e) {
+        } catch (UnsupportedEncodingException | JSONException e) {
             return Response.error(new ParseError(e));
         }
     }

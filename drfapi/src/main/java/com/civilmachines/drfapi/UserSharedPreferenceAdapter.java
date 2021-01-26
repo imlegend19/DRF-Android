@@ -2,13 +2,14 @@ package com.civilmachines.drfapi;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 /**
  * An adapter that handles a Shared Preference associated with a user.
  * This adapter creates and accesses a Shared Preference that contains only
  * user related data.
- *
+ * <p>
  * Programmer can change Shared Preference filename or token keyword. To do same
  * add a similar code in main activity:
  * <pre>

@@ -19,7 +19,8 @@ package com.civilmachines.drfapi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+
+import androidx.preference.PreferenceManager;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,21 +41,22 @@ public class SharedPreferenceAdapter {
 
     /**
      * This function initializes the shared preference with Activity
+     *
      * @param act is the current Activity
      */
-    SharedPreferenceAdapter(Activity act){
+    SharedPreferenceAdapter(Activity act) {
         main = PreferenceManager.getDefaultSharedPreferences(act);
     }
 
-    public SharedPreferenceAdapter(Context cont){
+    public SharedPreferenceAdapter(Context cont) {
         main = PreferenceManager.getDefaultSharedPreferences(cont);
     }
 
-    public SharedPreferenceAdapter(Activity act, String FileName){
+    public SharedPreferenceAdapter(Activity act, String FileName) {
         main = act.getSharedPreferences(FileName, Activity.MODE_PRIVATE);
     }
 
-    public SharedPreferenceAdapter(Context cont, String AdapterName){
+    public SharedPreferenceAdapter(Context cont, String AdapterName) {
         main = cont.getSharedPreferences(AdapterName, Context.MODE_PRIVATE);
     }
 
@@ -66,61 +68,61 @@ public class SharedPreferenceAdapter {
         return main;
     }
 
-    public int getInt(String key){
+    public int getInt(String key) {
         return main.getInt(key, 0);
     }
 
-    public String getString(String key){
+    public String getString(String key) {
         return main.getString(key, null);
     }
 
-    public boolean getBoolean(String key){
+    public boolean getBoolean(String key) {
         return main.getBoolean(key, false);
     }
 
-    public Set<String> getStringSet(String key){
+    public Set<String> getStringSet(String key) {
         return main.getStringSet(key, null);
     }
 
-    public float getFloat(String key){
+    public float getFloat(String key) {
         return main.getFloat(key, 0);
     }
 
-    public long getLong(String key){
+    public long getLong(String key) {
         return main.getLong(key, 0);
     }
 
-    public boolean saveData(String key, String val){
+    public boolean saveData(String key, String val) {
         edit = main.edit();
         edit.putString(key, val);
         return edit.commit();
     }
 
-    public boolean saveData(String key, int val){
+    public boolean saveData(String key, int val) {
         edit = main.edit();
         edit.putInt(key, val);
         return edit.commit();
     }
 
-    public boolean saveData(String key, long val){
+    public boolean saveData(String key, long val) {
         edit = main.edit();
         edit.putLong(key, val);
         return edit.commit();
     }
 
-    public boolean saveData(String key, boolean val){
+    public boolean saveData(String key, boolean val) {
         edit = main.edit();
         edit.putBoolean(key, val);
         return edit.commit();
     }
 
-    public boolean saveData(String key, Float val){
+    public boolean saveData(String key, Float val) {
         edit = main.edit();
         edit.putFloat(key, val);
         return edit.commit();
     }
 
-    public boolean saveData(String key, Set<String> val){
+    public boolean saveData(String key, Set<String> val) {
         edit = main.edit();
         edit.putStringSet(key, val);
         return edit.commit();
@@ -135,13 +137,13 @@ public class SharedPreferenceAdapter {
         return params;
     }
 
-    public boolean clearData(){
+    public boolean clearData() {
         edit = main.edit();
         edit.clear();
         return edit.commit();
     }
 
-    public boolean remove(String KEY){
+    public boolean remove(String KEY) {
         edit = main.edit();
         edit.remove(KEY);
         return edit.commit();

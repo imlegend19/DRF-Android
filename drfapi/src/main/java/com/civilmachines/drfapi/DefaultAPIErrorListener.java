@@ -8,7 +8,7 @@ import org.json.JSONObject;
  * function body. It requires user to override and implement the same in activity
  * where Django Request is being created. This way, user has access to all activity/
  * context based variables.
- *
+ * <p>
  * Programmer is expected to use this in a following manner:
  *
  * <pre>{@code
@@ -27,6 +27,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param response message String that is provided in error by Android
      */
     @Override
@@ -36,6 +37,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param response message String that is provided in error by Android
      */
     @Override
@@ -45,6 +47,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param response message String that is provided in error by Android
      */
     @Override
@@ -54,6 +57,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param response message String that is provided in error by Android
      */
     @Override
@@ -63,6 +67,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param response message String that is sent by server
      */
     @Override
@@ -72,6 +77,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param message extracted from "detail" key in JSON Body
      */
     @Override
@@ -81,6 +87,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param message extracted from "detail" key in JSON Body or
      */
     @Override
@@ -90,6 +97,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param message extracted from "detail" key in JSON Body or
      */
     @Override
@@ -99,12 +107,13 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param response raw JSONObject sent from server. This needs
      *                 to be parsed here as it may contain error in
      *                 following format:
      *                 <pre>
-     *                     {@code {"field": ["message"], ...}}
-     *                 </pre>
+     *                                     {@code {"field": ["message"], ...}}
+     *                                 </pre>
      */
     @Override
     public void onBadRequestError(JSONObject response) {
@@ -113,6 +122,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param message extracted from "detail" key in JSON Body or
      */
     @Override
@@ -122,6 +132,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param message extracted from "detail" or "data" key in JSON Body
      */
     @Override
@@ -131,6 +142,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param response raw JSONObject sent from server
      */
     @Override
@@ -140,6 +152,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param message extracted from "detail" or "data" key in JSON Body
      */
     @Override
@@ -149,6 +162,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param response raw String body of response
      */
     @Override
@@ -158,6 +172,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param response raw JSON body of response
      */
     @Override
@@ -167,6 +182,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param response raw String body of response which is in HTML format
      */
     @Override
@@ -176,6 +192,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param response raw String body of response
      */
     @Override
@@ -185,6 +202,7 @@ public class DefaultAPIErrorListener extends DjangoErrorListener {
 
     /**
      * {@inheritDoc}
+     *
      * @param response raw String body of response
      */
     @Override
